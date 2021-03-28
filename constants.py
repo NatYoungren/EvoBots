@@ -1,6 +1,6 @@
 import numpy
 
-numSteps = 1000
+numSteps = 400
 
 frontLeg_amplitude = numpy.pi / 2
 frontLeg_frequency = 25
