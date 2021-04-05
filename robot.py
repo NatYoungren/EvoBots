@@ -7,7 +7,7 @@ from motor import MOTOR
 class ROBOT:
 
     def __init__(self):
-        self.body = p.loadURDF("body.urdf")
+        self.robot = p.loadURDF("body.urdf")
         pyrosim.Prepare_To_Simulate("body.urdf")
 
         self.nn = NEURAL_NETWORK("brain.nndf")
@@ -26,7 +26,7 @@ class ROBOT:
 
     def Think(self):
         self.nn.Update()
-        self.nn.Print()
+        #self.nn.Print()
 
     def Prepare_To_Act(self):
         self.motors = {}
@@ -40,4 +40,13 @@ class ROBOT:
                 jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
                 desiredAngle = self.nn.Get_Value_Of(neuronName)
                 self.motors[jointName].Set_Value(desiredAngle, self)
-                print(neuronName, jointName, desiredAngle)
+                #print(neuronName, jointName, desiredAngle)
+
+    def Get_Fitness(self):
+        stateOfLinkZero = p.getLinkState(self.robot, 0)
+        positionOfLinkZero = stateOfLinkZero[0]
+        xCoordinateOfLinkZero = positionOfLinkZero[0]
+        print(xCoordinateOfLinkZero)
+        f = open("fitness.txt", "w")
+        f.write(str(xCoordinateOfLinkZero))
+        f.close()
