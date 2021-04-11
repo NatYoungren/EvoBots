@@ -1,10 +1,10 @@
 import os
-from hillclimber import HILL_CLIMBER
+from parallelHillClimber import PARALLEL_HILL_CLIMBER
 
-hc = HILL_CLIMBER()
-hc.parent.Evaluate("GUI")
-hc.Evolve()
-hc.Show_Best()
+phc = PARALLEL_HILL_CLIMBER()
+# phc.parent.Evaluate("GUI")
+phc.Evolve()
+phc.Show_Best()
 
 
 #for i in [0, 1, 2, 3, 4]:

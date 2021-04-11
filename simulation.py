@@ -9,7 +9,7 @@ import pyrosim.pyrosim as pyrosim
 
 class SIMULATION:
 
-    def __init__(self, directOrGUI):
+    def __init__(self, directOrGUI, solutionID):
         if directOrGUI == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
         else:
@@ -18,9 +18,12 @@ class SIMULATION:
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0,-9.8)
 
+        self.directOrGUI = directOrGUI
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(solutionID)
         self.Run()
+        os.system("rm brain"+solutionID+".nndf")
+
 
     def Run(self):
         for i in range(0, c.numSteps):
@@ -28,7 +31,8 @@ class SIMULATION:
             self.robot.Sense(i)
             self.robot.Think()
             self.robot.Act(i)
-#            time.sleep(1/180)
+            if self.directOrGUI != "DIRECT":
+                time.sleep(1/180)
 
     def __del__(self):
         p.disconnect()

@@ -1,7 +1,8 @@
 import numpy
 
 numSteps = 1200
-numberOfGenerations = 12
+numberOfGenerations = 10
+populationSize = 10
 
 frontLeg_amplitude = numpy.pi / 2
 frontLeg_frequency = 25
