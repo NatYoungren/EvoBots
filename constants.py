@@ -1,15 +1,15 @@
 import numpy
 
-numSteps = 1200
-numberOfGenerations = 15
-populationSize = 10
+numSteps = 2000
+numberOfGenerations = 40
+populationSize = 20
 
 numSensorNeurons = 4
 numHiddenNeurons = 4
 numMotorNeurons = 8
 
-motorJointRange = 0.4
-maxForce = 100
+motorJointRange = 0.6
+maxForce = 200
 
 frontLeg_amplitude = numpy.pi / 2
 frontLeg_frequency = 25

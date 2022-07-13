@@ -32,7 +32,8 @@ class SIMULATION:
             self.robot.Think()
             self.robot.Act(i)
             if self.directOrGUI != "DIRECT":
-                time.sleep(1/180)
+                #time.sleep(1/180)
+                pass
 
     def __del__(self):
         p.disconnect()
